@@ -3,7 +3,7 @@
 ![status](https://img.shields.io/badge/status-under_construction-orange)
 ![maintenance](https://img.shields.io/badge/maintenance-active-brightgreen)
 
-🚧 **Under Construction**  
+🚧 **Under Construction**  🚧
 This repository is currently in **active development**.  
 Expect frequent changes and updates.  
 
