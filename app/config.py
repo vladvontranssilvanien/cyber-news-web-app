@@ -5,3 +5,4 @@ load_dotenv()
 
 class Config:
     SECRET_KEY = os.environ.get("FLASK_SECRET_KEY", "dev-secret")
+    NEWSAPI_KEY = os.environ.get("NEWSAPI_KEY", "")
