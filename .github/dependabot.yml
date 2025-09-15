@@ -1,27 +1,8 @@
 version: 2
 updates:
-  - package-ecosystem: "pip"       # We are using pip for Python deps in requirements.txt
+  - package-ecosystem: "pip"       # Use pip for Python deps
     directory: "/"                 # Root of the repo
     schedule:
-      interval: "weekly"           # Run once a week
-      day: "monday"                # Every Monday
-      time: "07:00"                # At 07:00
-      timezone: "Europe/Berlin"    # Berlin timezone
-    open-pull-requests-limit: 2    # Cap concurrent Dependabot PRs
-    allow:
-      - dependency-type: "direct"  # Only direct prod dependencies
-    groups:
-      prod-minor-and-patch:        # Group all minor and patch updates into a single PR
-        patterns:
-          - "*"
-        update-types:
-          - "minor"
-          - "patch"
-    labels:
-      - dependencies               # Tag PRs for quick triage
-      - security
-    ignore:
-      - dependency-name: "*"       # Ignore major bumps automatically
-        update-types:
-          - "version-update:semver-major"
+      interval: "weekly"           # Check once per week
+
 
