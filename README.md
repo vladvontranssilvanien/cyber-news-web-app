@@ -18,4 +18,4 @@ source .venv/bin/activate
 pip install -r requirements.txt
 cp .env.sample .env
 
-> CI ruleset check
+> CI ruleset checkCI: trigger workflow
