@@ -1,8 +1,16 @@
 version: 2
 updates:
-  - package-ecosystem: "pip"       # Use pip for Python deps
-    directory: "/"                 # Root of the repo
+  - package-ecosystem: "pip"
+    directory: "/"
     schedule:
-      interval: "weekly"           # Check once per week
-
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    groups:
+      pip-patches:
+        patterns: ["*"]
+        update-types: ["patch"]
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
 
