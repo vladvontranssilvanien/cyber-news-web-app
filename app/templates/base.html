@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
   </head>
-  <body>
+  <body class="{{ page_class|default('') }}">
     <header class="site-header">
       <div class="container hdr">
         <a class="brand" href="/">⚡ Cyber News</a>

@@ -1,14 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
-<section class="hero" style="background-image: url('{{ url_for('static', filename='img/hero-home.jpg') }}');">
 
-
-    <div class="hero-inner">
-      <h1>Cyber News</h1>
-      <p class="sub">Live headlines from trusted sources</p>
-    </div>
-  </section>
 
   {% if error %}
     <div class="notice error">{{ error }}</div>
