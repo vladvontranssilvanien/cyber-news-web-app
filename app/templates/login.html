@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="hero" style="background-image: url('{{ url_for('static', filename='img/hero-login.jpeg') }}');"">
+  <div class="hero-inner">
+    <h1>Admin Login</h1>
+    <p class="sub">Restricted area</p>
+  </div>
+</section>
+
+<div class="container" style="max-width:520px; padding:1rem 0;">
+  <form method="post" action="/admin/login" class="card" style="padding:1rem;">
+    <div class="card-body">
+      <label for="user">Username</label>
+      <input id="user" name="username" type="text" required
+             style="padding:.6rem .7rem;border-radius:.75rem;border:1px solid color-mix(in oklab,var(--muted),transparent 60%);background:var(--paper);color:var(--text)">
+      <label for="pass">Password</label>
+      <input id="pass" name="password" type="password" required
+             style="padding:.6rem .7rem;border-radius:.75rem;border:1px solid color-mix(in oklab,var(--muted),transparent 60%);background:var(--paper);color:var(--text)">
+      <button type="submit" style="margin-top:.6rem;padding:.6rem .9rem;border-radius:.75rem;border:0;background:var(--brand);color:#fff;font-weight:600;cursor:pointer">
+        Sign in
+      </button>
+    </div>
+  </form>
+</div>
+
+{% endblock %}

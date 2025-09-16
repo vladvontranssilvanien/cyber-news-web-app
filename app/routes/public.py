@@ -21,3 +21,7 @@ def index():
         page_size=page_size,
     )
     return render_template("index.html", articles=articles, error=error, query=q)
+
+@bp.route("/admin/login", methods=["GET"])
+def admin_login():
+    return render_template("login.html")
