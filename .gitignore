@@ -3,3 +3,8 @@ __pycache__/
 .env
 instance/
 .venv/
+__pycache__/
+*.pyc
+.venv/
+.env
+.DS_Store

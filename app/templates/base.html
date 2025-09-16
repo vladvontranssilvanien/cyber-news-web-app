@@ -1,20 +1,43 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Cyber News Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
   </head>
-  <body style="margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif">
-    <header style="padding:12px 16px;border-bottom:1px solid #e5e7eb">
-      <a href="/" style="font-weight:800;text-decoration:none;color:#111">⚡ Cyber News</a>
-      <form method="get" action="/" style="display:inline-block;margin-left:12px">
-        <input type="text" name="q" value="{{ query }}" placeholder="Search topics" />
-        <button type="submit">Search</button>
-      </form>
+  <body class="{{ page_class|default('') }}">
+    <header class="site-header">
+      <div class="container hdr">
+        <a class="brand" href="/">⚡ Cyber News</a>
+
+        <form class="search" method="get" action="/">
+          <input type="text" name="q" value="{{ query or '' }}" placeholder="Search topics" />
+          <button type="submit">Search</button>
+        </form>
+
+        <nav class="nav-actions">
+          <a href="/admin/login" class="navlink">Login</a>
+          <button id="themeToggle" aria-label="Toggle theme">🌓</button>
+        </nav>
+      </div>
     </header>
-    <main style="max-width:1100px;margin:0 auto;padding:16px">
+
+    <main class="container">
       {% block content %}{% endblock %}
     </main>
+
+    <footer class="site-footer">
+      <div class="container foot">
+      <small class="liquid-text">
+      Powered by NewsAPI • Educational project by Daniel Weber &amp; Vlad Cozmuta
+      </small>
+          </div>
+    </footer>
+    <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
   </body>
 </html>
+
