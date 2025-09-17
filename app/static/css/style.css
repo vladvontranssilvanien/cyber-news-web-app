@@ -33,16 +33,18 @@ body {
   font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
   background: var(--bg);
   color: var(--text);
+  line-height: 1.5;
 }
 
 .container {
-  max-width: 1100px;
+  width: min(100%, 1400px);
   margin: 0 auto;
-  padding: 1rem;
+  padding: clamp(0.75rem, 2vw, 1.5rem);
 }
 
 main {
   flex: 1 0 auto;
+  width: 100%;
 }
 
 .site-header {
@@ -51,90 +53,121 @@ main {
   z-index: 1000;
   border-bottom: 1px solid color-mix(in oklab, var(--muted), transparent 60%);
   backdrop-filter: saturate(140%) blur(10px);
-  background: color-mix(in oklab, var(--bg), transparent 12%);
+  background: color-mix(in oklab, var(--bg), transparent 40%);
+  padding-block: clamp(0.85rem, 2.2vw, 1.35rem);
 }
 
 .hdr {
   display: grid;
-  grid-template-columns: 1fr auto auto;
-  gap: 1rem;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  gap: clamp(1rem, 2.4vw, 1.6rem);
   align-items: center;
+  min-height: clamp(64px, 8vw, 86px);
 }
 
 nav {
   display: flex;
-  gap: 0.6rem;
+  gap: clamp(0.6rem, 1.8vw, 1rem);
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .brand {
   font-weight: 800;
-  font-size: 1.22rem;
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
   text-decoration: none;
-  color: var(--text);
+  
+  background: linear-gradient(270deg, var(--brand), #1c39df, #06b6d4);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+
+  animation: flow 8s ease infinite;
+  filter: drop-shadow(0 0 12px color-mix(in oklab, var(--brand), white 20%));
+  letter-spacing: 0.5px;
 }
 
 .navlink {
   color: var(--text);
   text-decoration: none;
-  padding: 0.6rem 0.9rem;
-  border: 1px solid color-mix(in oklab, var(--muted), transparent 60%);
-  border-radius: 0.7rem;
+  padding: clamp(0.7rem, 1.5vw, 0.95rem) clamp(1rem, 2.4vw, 1.35rem);
+  border: 1px solid color-mix(in oklab, var(--muted), transparent 55%);
+  border-radius: 0.8rem;
   font-weight: 600;
-  font-size: 0.96rem;
+  font-size: clamp(1rem, 1.9vw, 1.08rem);
+}
+
+
+.navlink:hover {
+  border-color: var(--brand);
+  background: color-mix(in oklab, var(--brand), transparent 40%);
 }
 
 .search {
   display: flex;
-  gap: 0.5rem;
+  gap: clamp(0.55rem, 1.6vw, 0.9rem);
+  width: min(100%, 480px);
+  align-items: center;
 }
 
 .search input {
   flex: 1;
-  padding: 0.55rem 0.7rem;
-  border-radius: 0.75rem;
-  border: 1px solid color-mix(in oklab, var(--muted), transparent 60%);
+  min-width: 0;
+  padding: clamp(0.7rem, 1.6vw, 0.95rem) clamp(0.9rem, 2vw, 1.2rem);
+  border-radius: 0.9rem;
+  border: 1px solid color-mix(in oklab, var(--muted), transparent 55%);
   background: var(--paper);
   color: var(--text);
+  font-size: clamp(1rem, 2vw, 1.08rem);
 }
 
 .search button {
-  padding: 0.55rem 0.9rem;
-  border-radius: 0.75rem;
+  padding: clamp(0.7rem, 1.6vw, 0.95rem) clamp(1rem, 2.4vw, 1.35rem);
+  border-radius: 0.9rem;
   border: 0;
   background: var(--brand);
   color: #fff;
   font-weight: 600;
+  font-size: clamp(1rem, 2vw, 1.08rem);
   cursor: pointer;
 }
 
+.search button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(96, 165, 250, 0.35);
+}
+
 #themeToggle {
-  border: 1px solid color-mix(in oklab, var(--muted), transparent 60%);
+  border: 1px solid color-mix(in oklab, var(--muted), transparent 55%);
   background: var(--paper);
   color: var(--text);
-  padding: 0.6rem 0.85rem;
-  border-radius: 0.75rem;
+  padding: clamp(0.7rem, 1.6vw, 0.95rem) clamp(0.95rem, 2.2vw, 1.25rem);
+  border-radius: 0.85rem;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: clamp(1rem, 1.9vw, 1.08rem);
 }
 
 .grid {
   display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  margin-top: 1rem;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(clamp(16rem, 45vw, 26.25rem), 1fr));
+  margin: clamp(1rem, 3vw, 2rem) auto;
+  width: min(100%, 1400px);
+  padding-inline: clamp(0.5rem, 2vw, 1rem);
 }
 
 .card {
   display: flex;
   flex-direction: column;
-  background: var(--paper);
+  background: color-mix(in oklab, var(--paper), transparent 20%);
   border: 1px solid color-mix(in oklab, var(--muted), transparent 60%);
   border-radius: 1rem;
   overflow: hidden;
   text-decoration: none;
   color: inherit;
   transition: transform 0.08s ease, border-color 0.08s ease;
+  height: 100%;
 }
 
 .card:hover {
@@ -144,7 +177,8 @@ nav {
 
 .card img {
   width: 100%;
-  height: 160px;
+  height: auto;
+  aspect-ratio: 16 / 9;
   object-fit: cover;
 }
 
@@ -153,6 +187,7 @@ nav {
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
+  flex: 1;
 }
 
 .card-title {
@@ -170,6 +205,210 @@ nav {
   gap: 0.75rem;
   font-size: 0.85rem;
   color: var(--muted);
+  flex-wrap: wrap;
+}
+
+.login-layout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: clamp(2.5rem, 6vw, 5rem) clamp(1.25rem, 5vw, 4rem);
+  min-height: clamp(560px, 72vh, 920px);
+}
+
+.login-card {
+  width: min(100%, clamp(480px, 90vw, 960px));
+  border-radius: 1.25rem;
+  background: color-mix(in oklab, var(--paper), transparent 50%);
+  backdrop-filter: blur(16px);
+  border: 1px solid color-mix(in oklab, var(--muted), transparent 70%);
+  box-shadow: 0 28px 80px rgba(15, 23, 42, 0.45);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(2rem, 6vw, 4rem);
+  padding: clamp(2rem, 6vw, 3.75rem);
+}
+
+.login-card__hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: clamp(0.75rem, 2vw, 1.5rem);
+}
+
+.login-card__hero h1 {
+  margin: 0;
+  font-size: clamp(2.2rem, 4vw, 3rem);
+}
+
+.login-card__hero .sub {
+  margin: 0;
+  color: color-mix(in oklab, var(--muted), transparent 20%);
+  font-size: clamp(1rem, 1.8vw, 1.25rem);
+  max-width: 36ch;
+}
+
+.login-card__form {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1rem, 2.5vw, 1.75rem);
+  width: 100%;
+}
+
+.login-card__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  width: 100%;
+}
+
+.login-card__form label {
+  font-weight: 600;
+  font-size: 0.98rem;
+  margin: 0;
+  color: var(--text);
+}
+
+.login-card__form input {
+  width: 100%;
+  padding: 0.75rem 0.95rem;
+  border-radius: 0.85rem;
+  border: 1px solid color-mix(in oklab, var(--muted), transparent 55%);
+  background: color-mix(in oklab, var(--paper), transparent 50%);
+  color: var(--text);
+  transition: border-color 0.12s ease, box-shadow 0.12s ease;
+}
+
+.login-card__form input:focus {
+  outline: none;
+  border-color: color-mix(in oklab, var(--brand), transparent 55%);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--brand), transparent 80%);
+}
+
+.login-card__form button {
+  padding: 0.85rem 1rem;
+  border-radius: 0.85rem;
+  border: 0;
+  background: var(--brand);
+  color: #fff;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  width: min(100%, 240px);
+  align-self: center;
+}
+
+.login-card__form button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 15px 30px rgba(37, 99, 235, 0.35);
+}
+
+.login-card__form button:active {
+  transform: translateY(1px);
+  box-shadow: none;
+}
+
+@media (min-width: 900px) {
+  .login-card__form input,
+  .login-card__form button {
+    max-width: 420px;
+    margin-inline: 0;
+  }
+}
+
+@media (max-width: 980px) {
+  .login-card {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: clamp(1.5rem, 5vw, 2.5rem);
+  }
+
+  .login-card__hero {
+    align-items: center;
+  }
+
+  .login-card__hero .sub {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .login-card__form {
+    align-items: center;
+  }
+
+  .login-card__field {
+    align-items: center;
+  }
+}
+
+@media (max-width: 720px) {
+  .hdr {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-auto-rows: auto;
+    align-items: start;
+  }
+
+  nav {
+    order: 3;
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .search {
+    grid-column: 1 / -1;
+    width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .login-layout {
+    padding: clamp(2rem, 10vw, 3rem) clamp(1rem, 6vw, 2rem);
+  }
+
+  .login-card {
+    padding: clamp(1.5rem, 8vw, 2.25rem);
+    border-radius: 1rem;
+  }
+
+  .login-card__form input,
+  .login-card__form button {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 540px) {
+  .hdr {
+    grid-template-columns: 1fr auto;
+    grid-auto-rows: auto;
+  }
+
+  .site-footer .foot {
+    min-height: 92px;
+    padding: 1.5rem 1rem calc(1.5rem + env(safe-area-inset-bottom));
+  }
+}
+
+@media (max-width: 480px) {
+  nav {
+    gap: 0.4rem;
+  }
+
+  .navlink {
+    flex: 1 1 calc(50% - 0.4rem);
+    text-align: center;
+  }
+
+  .search {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%
+  }
+
+  .search button {
+    width: 100%;
+  }
 }
 
 .notice {
@@ -187,7 +426,7 @@ nav {
   border-top: 1px solid color-mix(in oklab, var(--muted), transparent 60%);
   margin-top: 2.25rem;
   backdrop-filter: saturate(140%) blur(10px);
-  background: color-mix(in oklab, var(--bg), transparent 12%);
+  background: color-mix(in oklab, var(--bg), transparent 40%);
 }
 
 .site-footer .foot {
@@ -202,19 +441,17 @@ nav {
 }
 
 .site-footer small {
-  color: var(--muted);
-}
-
-.liquid-text {
-  background: radial-gradient(120% 120% at 0% 0%, var(--brand), #7c3aed, #06b6d4);
+  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+  font-weight: 700;
+  font-family: "Segoe UI Rounded", "Inter", system-ui, sans-serif;
+  letter-spacing: 0.5px;
+  background: linear-gradient(270deg, var(--brand), #1c39df, #06b6d4);
   background-size: 200% 200%;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   animation: flow 8s ease infinite;
-  filter: drop-shadow(0 0 8px color-mix(in oklab, var(--brand), white 12%));
-  font-weight: 700;
-  letter-spacing: 0.2px;
+  filter: drop-shadow(0 0 12px color-mix(in oklab, var(--brand), white 20%));
 }
 
 @keyframes flow {
@@ -243,13 +480,13 @@ nav {
   font-size: clamp(1.6rem, 2.8vw, 2.4rem);
 }
 
-.hero-inner .sub {
+.hero-inner.sub {
   margin: 0.25rem 0 0;
   color: #cbd5e1;
 }
 
 body.bg-home {
-  background-image: url("/static/img/hero-home.jpg");
+  background-image: url("/static/img/hero-home.jpeg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -264,6 +501,12 @@ body.bg-login {
   background-attachment: fixed;
 }
 
+body.bg-login main.container {
+  max-width: none;
+  padding: 0;
+  width: 100%;
+}
+
 body.bg-about {
   background-image: url("/static/img/hero-about.jpeg");
   background-size: cover;
@@ -272,18 +515,20 @@ body.bg-about {
   background-attachment: fixed;
 }
 
-@media (max-width: 540px) {
-  .hdr {
-    grid-template-columns: 1fr auto;
-    grid-auto-rows: auto;
-  }
-
-  .search {
-    grid-column: 1 / -1;
-  }
-
-  .site-footer .foot {
-    min-height: 92px;
-    padding: 1.5rem 1rem calc(1.5rem + env(safe-area-inset-bottom));
-  }
+.site-header.with-search-row .hdr {
+  grid-template-columns: auto auto;
+  grid-template-areas:
+    "brand nav"
+    "search search";
+  row-gap: clamp(0.85rem, 2vw, 1.4rem);
+  align-items: center;
 }
+
+.site-header.with-search-row .brand { grid-area: brand; }
+.site-header.with-search-row nav { grid-area: nav; justify-self: end; }
+.site-header.with-search-row .search {
+  grid-area: search;
+  width: 60%;
+  margin: 0 auto;          
+  justify-content: center;
+}    
