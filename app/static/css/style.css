@@ -1,41 +1,209 @@
-:root{--bg:#0b1220;--paper:#111827;--text:#e5e7eb;--muted:#9ca3af;--brand:#60a5fa;--ok:#34d399;--err:#ef4444}
-html[data-theme="light"]{--bg:#f7fafc;--paper:#fff;--text:#0f172a;--muted:#475569;--brand:#2563eb}
-*{box-sizing:border-box} body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--text)}
-.container{max-width:1100px;margin:0 auto;padding:1rem}
-.site-header{position:sticky;top:0;backdrop-filter:saturate(140%) blur(10px);background:color-mix(in oklab,var(--bg),transparent 20%);
-  border-bottom:1px solid color-mix(in oklab,var(--muted),transparent 60%)}
-.hdr{display:grid;grid-template-columns:1fr auto auto;gap:.75rem;align-items:center}
-.brand{font-weight:800;font-size:1.15rem;text-decoration:none;color:var(--text)}
-.navlink{color:var(--text);text-decoration:none;padding:.5rem .75rem;border:1px solid color-mix(in oklab,var(--muted),transparent 60%);border-radius:.7rem}
-.search{display:flex;gap:.5rem} .search input{flex:1;padding:.55rem .7rem;border-radius:.75rem;border:1px solid color-mix(in oklab,var(--muted),transparent 60%);background:var(--paper);color:var(--text)}
-.search button{padding:.55rem .9rem;border-radius:.75rem;border:0;background:var(--brand);color:#fff;font-weight:600;cursor:pointer}
-#themeToggle{border:1px solid color-mix(in oklab,var(--muted),transparent 60%);background:var(--paper);color:var(--text);padding:.55rem .7rem;border-radius:.75rem;cursor:pointer}
+:root {
+  --bg: #0b1220;
+  --paper: #111827;
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+  --brand: #60a5fa;
+  --ok: #34d399;
+  --err: #ef4444;
+}
 
-.grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));margin-top:1rem}
-.card{display:flex;flex-direction:column;background:var(--paper);border:1px solid color-mix(in oklab,var(--muted),transparent 60%);border-radius:1rem;overflow:hidden;
-  text-decoration:none;color:inherit;transition:transform .08s ease, border-color .08s ease}
-.card:hover{transform:translateY(-2px);border-color:var(--brand)}
-.card img{width:100%;height:160px;object-fit:cover}
-.card-body{padding:.9rem;display:flex;flex-direction:column;gap:.6rem}
-.card-title{margin:0;font-size:1.05rem}
-.card-text{margin:0;color:var(--muted)}
-.card-meta{display:flex;gap:.75rem;font-size:.85rem;color:var(--muted)}
-.notice{padding:.8rem 1rem;border-radius:.75rem}.notice.error{background:color-mix(in oklab,var(--err),transparent 80%);color:var(--text)}
-.site-footer{border-top:1px solid color-mix(in oklab,var(--muted),transparent 60%);margin-top:2rem}
-.site-footer small{color:var(--muted)}
-@media (max-width:540px){.hdr{grid-template-columns:1fr auto;grid-auto-rows:auto}.search{grid-column:1 / -1}}
- 
+html[data-theme="light"] {
+  --bg: #f7fafc;
+  --paper: #fff;
+  --text: #0f172a;
+  --muted: #475569;
+  --brand: #2563eb;
+}
 
-/* --- NAV bigger / spacing --- */
-.hdr { gap: 1rem; }
-.brand { font-size: 1.25rem; }
-nav { display: flex; gap: .6rem; align-items: center; }
-.navlink { font-weight: 600; font-size: .95rem; padding: .6rem .85rem; }
-#themeToggle { font-size: 1rem; padding: .6rem .8rem; }
+* {
+  box-sizing: border-box;
+}
 
-/* --- Footer centered + liquid text --- */
-.site-footer { border-top: 1px solid color-mix(in oklab, var(--muted), transparent 60%); margin-top: 2.25rem; }
-.site-footer .foot { display: flex; justify-content: center; align-items: center; text-align: center; padding: 1.5rem 1rem; }
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid color-mix(in oklab, var(--muted), transparent 60%);
+  backdrop-filter: saturate(140%) blur(10px);
+  background: color-mix(in oklab, var(--bg), transparent 12%);
+}
+
+.hdr {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 1rem;
+  align-items: center;
+}
+
+nav {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.brand {
+  font-weight: 800;
+  font-size: 1.22rem;
+  text-decoration: none;
+  color: var(--text);
+}
+
+.navlink {
+  color: var(--text);
+  text-decoration: none;
+  padding: 0.6rem 0.9rem;
+  border: 1px solid color-mix(in oklab, var(--muted), transparent 60%);
+  border-radius: 0.7rem;
+  font-weight: 600;
+  font-size: 0.96rem;
+}
+
+.search {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.search input {
+  flex: 1;
+  padding: 0.55rem 0.7rem;
+  border-radius: 0.75rem;
+  border: 1px solid color-mix(in oklab, var(--muted), transparent 60%);
+  background: var(--paper);
+  color: var(--text);
+}
+
+.search button {
+  padding: 0.55rem 0.9rem;
+  border-radius: 0.75rem;
+  border: 0;
+  background: var(--brand);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#themeToggle {
+  border: 1px solid color-mix(in oklab, var(--muted), transparent 60%);
+  background: var(--paper);
+  color: var(--text);
+  padding: 0.6rem 0.85rem;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  margin-top: 1rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background: var(--paper);
+  border: 1px solid color-mix(in oklab, var(--muted), transparent 60%);
+  border-radius: 1rem;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.08s ease, border-color 0.08s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  border-color: var(--brand);
+}
+
+.card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.card-title {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.card-text {
+  margin: 0;
+  color: var(--muted);
+}
+
+.card-meta {
+  display: flex;
+  gap: 0.75rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.notice {
+  padding: 0.8rem 1rem;
+  border-radius: 0.75rem;
+}
+
+.notice.error {
+  background: color-mix(in oklab, var(--err), transparent 80%);
+  color: var(--text);
+}
+
+.site-footer {
+  flex-shrink: 0;
+  border-top: 1px solid color-mix(in oklab, var(--muted), transparent 60%);
+  margin-top: 2.25rem;
+  backdrop-filter: saturate(140%) blur(10px);
+  background: color-mix(in oklab, var(--bg), transparent 12%);
+}
+
+.site-footer .foot {
+  min-height: 84px;
+  padding: 1.25rem 1rem calc(1.25rem + env(safe-area-inset-bottom));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.site-footer small {
+  color: var(--muted);
+}
 
 .liquid-text {
   background: radial-gradient(120% 120% at 0% 0%, var(--brand), #7c3aed, #06b6d4);
@@ -46,153 +214,76 @@ nav { display: flex; gap: .6rem; align-items: center; }
   animation: flow 8s ease infinite;
   filter: drop-shadow(0 0 8px color-mix(in oklab, var(--brand), white 12%));
   font-weight: 700;
-  letter-spacing: .2px;
+  letter-spacing: 0.2px;
 }
 
 @keyframes flow {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
-/* --- Hero section (background image) --- */
-.hero{
-  position: relative;
-  min-height: 320px;
-  border-radius: 1rem;
-  overflow: hidden;
-  display: flex;
-  align-items: end;
-  padding: 2rem;
-  margin-top: 1rem;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-.hero::before{
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,.35) 60%, rgba(0,0,0,.55) 100%);
-}
-.hero > .hero-inner{
+
+.hero-inner {
   position: relative;
   z-index: 1;
-}
-.hero h1{ margin:0; font-size: clamp(1.5rem, 2.6vw, 2.2rem); }
-.hero .sub{ margin:.25rem 0 0; color: var(--muted); }
-
-/* nav puțin mai mare */
-.brand{ font-size: 1.22rem; }
-.navlink{ font-weight:600; font-size:.96rem; padding:.6rem .9rem; }
-#themeToggle{ font-size:1rem; padding:.6rem .85rem; }
-
-
-/* ---- Full-bleed hero ---- */
-.hero{
-  position: relative;
-  min-height: 45vh;            /* mai înalt: ~jumătate din ecran */
   display: flex;
-  align-items: end;
-  padding: 2rem;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  overflow: hidden;
-  border-radius: 0;            /* fără colțuri pt. full-bleed */
-}
-
-/* sparge din container ca să ocupe toată lățimea viewport-ului */
-.fullbleed{
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
-}
-
-/* mic gradient ca textul să fie lizibil peste imagine */
-.hero::before{
-  content:"";
-  position:absolute; inset:0;
-  background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,.35) 60%, rgba(0,0,0,.55) 100%);
-}
-
-
-
-/* Full-bleed hero cu IMG cover */
-.hero{
-  position: relative;
-  min-height: 50vh;         /* jumătate din ecran */
-  overflow: hidden;
-  border-radius: 0;
-  margin: 0;
-}
-.hero.fullbleed{
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
-}
-.hero-bg{
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;        /* umple tot */
-}
-.hero-overlay{
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,.35) 60%, rgba(0,0,0,.55) 100%);
-}
-.hero-inner{
-  position: relative;
-  z-index: 2;
-  height: 100%;
-  display: flex;
-  align-items: end;
+  flex-direction: column;
+  gap: 0.25rem;
   padding: 2rem 1rem;
 }
-.hero h1{ margin:0; font-size: clamp(1.6rem, 2.8vw, 2.4rem); }
-.hero .sub{ margin:.25rem 0 0; color:#cbd5e1; }
 
-
-/* Header above everything */
-.site-header{
-  position: sticky;   /* deja ai asta, îl lăsăm */
-  top: 0;
-  z-index: 1000;      /* ➜ stă peste hero/imagini */
-  /* opțional: fă-l un pic mai opac ca să nu „strălucească” imaginea de dedesubt */
-  background: color-mix(in oklab, var(--bg), transparent 12%);
+.hero-inner h1 {
+  margin: 0;
+  font-size: clamp(1.6rem, 2.8vw, 2.4rem);
 }
 
-/* Layering sigur pentru hero */
-.hero{ position: relative; z-index: 0; }
-.hero::before{ z-index: 0; }      /* overlay-ul rămâne sub text */
-.hero-inner{ position: relative; z-index: 1; } /* textul peste overlay */
+.hero-inner .sub {
+  margin: 0.25rem 0 0;
+  color: #cbd5e1;
+}
 
-
-/* Wallpaper pe tot fundalul — diferit pe pagini */
-html, body { height: 100%; }
-
-body.bg-home,
-body.bg-login,
-body.bg-about {
+body.bg-home {
+  background-image: url("/static/img/hero-home.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  /* parallax subtil — pe iOS poate fi ignorat, e ok */
   background-attachment: fixed;
 }
 
-/* URL-urile exacte (ai .jpg la home, .jpeg la login/about) */
-body.bg-home  { background-image: url("/static/img/hero-home.jpg"); }
-body.bg-login { background-image: url("/static/img/hero-login.jpeg"); }
-body.bg-about { background-image: url("/static/img/hero-about.jpeg"); }
+body.bg-login {
+  background-image: url("/static/img/hero-login.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
 
-/* Header mereu deasupra imaginii de fundal */
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  /* puțină opacitate ca textul să rămână lizibil peste wallpaper */
-  backdrop-filter: saturate(140%) blur(10px);
-  background: color-mix(in oklab, var(--bg), transparent 12%);
+body.bg-about {
+  background-image: url("/static/img/hero-about.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+@media (max-width: 540px) {
+  .hdr {
+    grid-template-columns: 1fr auto;
+    grid-auto-rows: auto;
+  }
+
+  .search {
+    grid-column: 1 / -1;
+  }
+
+  .site-footer .foot {
+    min-height: 92px;
+    padding: 1.5rem 1rem calc(1.5rem + env(safe-area-inset-bottom));
+  }
 }
